@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Course Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-dark {
+            background: rgba(30, 41, 59, 0.3); /* Darker background with some transparency */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            border: 1px solid rgba(55, 65, 81, 0.5); /* Darker border */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* More pronounced dark shadow */
+        }
+
+        .glass-dark-text {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex justify-center items-center py-8">
+<div class="glass-dark p-8 w-full max-w-md">
+    <h1 class="text-2xl font-semibold text-gray-300 mb-6 text-center glass-dark-text">Login to Course Registration</h1>
+    <form action="LoginServlet" method="POST" class="space-y-4">
+        <div class="relative">
+            <label for="username" class="block text-gray-400 text-sm font-bold mb-2 glass-dark-text">Username</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-user text-gray-400 glass-dark-text"></i>
+                </div>
+                <input type="text" id="username" name="username" required class="shadow appearance-none border rounded-md w-full py-2 px-3 pl-10 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-gray-800 bg-opacity-70 glass-dark-text" placeholder="Enter your username">
+            </div>
+        </div>
+        <div class="relative">
+            <label for="password" class="block text-gray-400 text-sm font-bold mb-2 glass-dark-text">Password</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-lock text-gray-400 glass-dark-text"></i>
+                </div>
+                <input type="password" id="password" name="password" required class="shadow appearance-none border rounded-md w-full py-2 px-3 pl-10 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-gray-800 bg-opacity-70 glass-dark-text" placeholder="••••••••">
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                    <i class="fas fa-eye text-gray-400 cursor-pointer glass-dark-text" id="togglePassword"></i>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline w-full glass-dark-text">
+            Login
+        </button>
+    </form>
+</div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+</body>
+</html>
